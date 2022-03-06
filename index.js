@@ -163,10 +163,10 @@ inquirer.prompt(select_Options).then((anwsers) => {
 				{
 					type: "input",
 					name: "role",
-					message: "What is the employees role?",
+					message: "What is the employees role id?",
 					validate: function (input) {
-						if (input == "") {
-							return "Please enter a valid role!";
+						if (isNaN(input)) {
+							return "Please enter a valid role id!";
 						}
 						return true;
 					},
@@ -174,7 +174,7 @@ inquirer.prompt(select_Options).then((anwsers) => {
 				{
 					type: "input",
 					name: "manager",
-					message: "Who is their manager?",
+					message: "what is their managers name?",
 					validate: function (input) {
 						if (input == "") {
 							return "Please enter a valid name!";
@@ -187,7 +187,7 @@ inquirer.prompt(select_Options).then((anwsers) => {
 				const { first_name, last_name, role, manager } = answers;
 				db.promise()
 					.query(
-						`INSERT INTO employee(first_name, last_name, role_id, manager_id ) VALUES("${first_name}", "${last_name}, "${role}", "${manager}")`
+						`INSERT INTO employee(first_name, last_name, role_id, manager_id ) VALUES("${first_name}", "${last_name}", "${role}", "${manager}")`
 					)
 					.then(([rows, fields]) => {
 						console.log(`Employee has been added!`);
