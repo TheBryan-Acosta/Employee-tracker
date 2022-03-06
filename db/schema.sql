@@ -1,8 +1,15 @@
+DROP DATABASE IF EXISTS employee_tracker;
+CREATE DATABASE employee_tracker;
+
+USE employee_tracker;
+
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'D^XZ6$EuwC';
+
 DROP TABLE IF EXISTS department;
 DROP TABLE IF EXISTS job;
 DROP TABLE IF EXISTS employee;
 
-USE employee_tracker;
 
 CREATE TABLE department (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -16,7 +23,7 @@ CREATE TABLE job (
   department_id INTEGER
 );
 
-CREATE TABLE department (
+CREATE TABLE employee (
   id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
